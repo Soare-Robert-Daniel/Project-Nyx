@@ -1,4 +1,4 @@
-package sample;
+package Manager;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -6,13 +6,20 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+
+
 public class Main extends Application {
+
+    Login.Builder login;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-        primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(root, 300, 275));
+
+        login = new Login.Builder();
+
+        // Parent root = FXMLLoader.load(getClass().getResource("Login\\Login.fxml"));
+        primaryStage.setTitle("Project Nyx");
+        primaryStage.setScene(login.buildScene());
         primaryStage.show();
     }
 
