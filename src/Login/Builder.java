@@ -12,23 +12,49 @@ import javafx.stage.Stage;
 public class Builder {
     protected int width;
     protected int height;
+    protected boolean active;
 
+    FXMLLoader loader;
 
-    public Builder()
+    private void init() throws Exception
+    {
+        this.loader = new FXMLLoader(getClass().getResource("Login.fxml"));
+        this.loader.load();
+    }
+    public Builder() throws Exception
     {
         height = 600;
         width = 800;
+        active = true;
+        init();
     }
 
-    public Builder(int width, int height)
+    public Builder(int width, int height) throws Exception
     {
         this.height = height;
         this.width = width;
+        this.active = true;
+        init();
+    }
+
+    public Builder(int width, int height, boolean active) throws Exception
+    {
+        this.height = height;
+        this.width = width;
+        this.active = active;
+        init();
     }
 
     public Scene buildScene() throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
+        Parent root = this.loader.getRoot();
+
         return new Scene(root, width, height);
+    }
+
+    public Controller getController() throws Exception
+    {
+        // this.loader.load(getClass().getResource("Login.fxml"));
+        return (Controller) this.loader.getController();
     }
 
 }
