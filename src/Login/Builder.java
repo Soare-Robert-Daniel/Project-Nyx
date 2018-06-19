@@ -45,7 +45,8 @@ public class Builder {
         init();
     }
 
-    public Scene buildScene() throws Exception{
+    public Scene buildScene() throws Exception
+    {
         Parent root = this.loader.getRoot();
 
         return new Scene(root, width, height);

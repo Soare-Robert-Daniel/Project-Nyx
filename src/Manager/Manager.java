@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 
 public class Manager {
 
-    protected Login.Controller loginControl;
+    public Login.Controller loginControl;
 
     public Manager()
     {

@@ -11,7 +11,7 @@ import javafx.stage.Stage;
 public class Main extends Application {
 
     private Stage stage;
-
+    private Scene scene;
 
     Login.Builder login;
     Manager manager;
@@ -39,6 +39,8 @@ public class Main extends Application {
         // Parent root = FXMLLoader.load(getClass().getResource("Login\\Login.fxml"));
         primaryStage.setTitle("Project Nyx");
         primaryStage.setScene(login.buildScene());
+        scene = primaryStage.getScene();
+
         primaryStage.show();
     }
 
