@@ -12,12 +12,14 @@ import javafx.scene.input.MouseEvent;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-
+import Manager.Manager;
 
 public class Controller implements Initializable {
 
-    //@FXML
-    public TextField usernameField;
+    Manager manager;
+
+    @FXML
+    private TextField usernameField;
 
     @FXML
     private PasswordField passwordField;
@@ -42,18 +44,41 @@ public class Controller implements Initializable {
     }
 
     public void loginUser(MouseEvent event){
-        System.out.println("You clicked me!");
+        System.out.println("Go to Home!");
         ShowFields();
+        this.manager.changeScene("home");
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resource) {
-        System.out.println("Checking form...");
+        System.out.println("[System] Checking form...");
         if(checkInit())
         {
-            System.out.println("-> All elements are initialized!");
+            System.out.println("[Load-> Login Controller] -> All elements are initialized!");
         }
-        System.out.println("Loading data...");
+        else
+        {
+            System.out.println("[Warning][Load-> Login Controller] -> Some elements are not initialized!");
+        }
+        System.out.println("[System] Loading data...");
+    }
+
+    public void test()
+    {
+        System.out.println("Test passed...");
+    }
+
+    public void setManager(Manager manager)
+    {
+        this.manager = manager;
+        if(this.manager == null)
+        {
+            System.out.println("[Warning] Login Manager is null");
+            return;
+        }
+        this.manager.testManager();
+        System.out.println("[System] Login Controller has initialized it's manager...");
     }
 
 }
+

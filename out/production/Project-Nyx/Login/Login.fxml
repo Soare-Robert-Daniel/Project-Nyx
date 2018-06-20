@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane alignment="center" hgap="10" prefHeight="626.0" prefWidth="817.0" vgap="10" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Login.Controller">
+<GridPane alignment="center" hgap="10" prefHeight="380.0" prefWidth="440.0" vgap="10" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Login.Controller">
    <columnConstraints>
       <ColumnConstraints />
    </columnConstraints>
@@ -22,9 +22,9 @@
       <RowConstraints />
    </rowConstraints>
    <children>
-      <AnchorPane prefHeight="632.0" prefWidth="833.0" style="-fx-background-color: #294F6d;">
+      <AnchorPane prefHeight="380.0" prefWidth="440.0" style="-fx-background-color: #294F6d;">
          <children>
-            <VBox layoutX="280.0" layoutY="153.0" prefHeight="320.0" prefWidth="260.0">
+            <VBox fillWidth="false" layoutX="146.0" layoutY="134.0" prefHeight="338.0" prefWidth="397.0">
                <children>
                   <Label alignment="TOP_CENTER" contentDisplay="CENTER" text="Project Nyx" textAlignment="CENTER" textFill="WHITE">
                      <font>
