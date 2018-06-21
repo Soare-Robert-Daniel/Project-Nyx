@@ -5,7 +5,6 @@
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.effect.Blend?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -15,7 +14,7 @@
    <children>
       <VBox prefHeight="450.0" prefWidth="120.0" style="-fx-background-color: #2c3e50;">
          <children>
-            <Button mnemonicParsing="false" style="-fx-background-color: transparancy; -fx-text-fill: white; -fx-border-width: 2px 2px 2px 2px; -fx-border-color: white;" text="Add">
+            <Button fx:id="addButton" mnemonicParsing="false" onAction="#addKey" style="-fx-background-color: transparancy; -fx-text-fill: white; -fx-border-width: 2px 2px 2px 2px; -fx-border-color: white;" text="Add">
                <font>
                   <Font size="25.0" />
                </font>
@@ -32,11 +31,47 @@
             </Button>
          </children>
       </VBox>
-      <ScrollPane hbarPolicy="NEVER" prefHeight="450.0" prefWidth="682.0" style="-fx-background-color: #1BA39C;" AnchorPane.leftAnchor="120.0">
-        <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="450.0" prefWidth="680.0">
+      <ScrollPane hbarPolicy="NEVER" prefHeight="450.0" prefWidth="680.0" AnchorPane.leftAnchor="120.0">
+         <content>
+            <VBox fx:id="pane" prefHeight="448.0" prefWidth="680.0">
                <children>
-                  <HBox prefHeight="50.0" prefWidth="670.0" style="-fx-background-color: #89c4f4; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #34495E;">
+                   <HBox prefHeight="50.0" prefWidth="670.0" style="-fx-background-color: #89c4f4; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #34495E;">
+                       <children>
+                           <TextField accessibleRole="TEXT" editable="false" layoutX="10.0" layoutY="21.0" text="Google">
+                               <font>
+                                   <Font size="13.0" />
+                               </font>
+                               <HBox.margin>
+                                   <Insets left="10.0" right="5.0" top="10.5" />
+                               </HBox.margin>
+                           </TextField>
+                           <TextField>
+                               <HBox.margin>
+                                   <Insets left="5.0" right="5.0" top="10.5" />
+                               </HBox.margin>
+                               <font>
+                                   <Font size="13.0" />
+                               </font>
+                           </TextField>
+                           <TextField>
+                               <HBox.margin>
+                                   <Insets left="5.0" right="40.0" top="10.5" />
+                               </HBox.margin>
+                               <font>
+                                   <Font size="13.0" />
+                               </font>
+                           </TextField>
+                           <CheckBox mnemonicParsing="false" text="Show">
+                               <font>
+                                   <Font size="16.0" />
+                               </font>
+                               <HBox.margin>
+                                   <Insets top="12.5" />
+                               </HBox.margin>
+                           </CheckBox>
+                       </children>
+                   </HBox>
+                  <HBox layoutX="10.0" layoutY="10.0" prefHeight="50.0" prefWidth="670.0" style="-fx-background-color: #89c4f4; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #34495E;">
                      <children>
                         <TextField accessibleRole="TEXT" editable="false" layoutX="10.0" layoutY="21.0" text="Google">
                            <font>
@@ -45,9 +80,6 @@
                            <HBox.margin>
                               <Insets left="10.0" right="5.0" top="10.5" />
                            </HBox.margin>
-                           <effect>
-                              <Blend />
-                           </effect>
                         </TextField>
                         <TextField>
                            <HBox.margin>
@@ -75,7 +107,7 @@
                         </CheckBox>
                      </children>
                   </HBox>
-                  <HBox layoutX="10.0" layoutY="10.0" prefHeight="50.0" prefWidth="670.0" style="-fx-background-color: #89c4f4;" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="50.0">
+                  <HBox layoutX="10.0" layoutY="60.0" prefHeight="50.0" prefWidth="670.0" style="-fx-background-color: #89c4f4; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #34495E;">
                      <children>
                         <TextField accessibleRole="TEXT" editable="false" layoutX="10.0" layoutY="21.0" text="Google">
                            <font>
@@ -84,9 +116,6 @@
                            <HBox.margin>
                               <Insets left="10.0" right="5.0" top="10.5" />
                            </HBox.margin>
-                           <effect>
-                              <Blend />
-                           </effect>
                         </TextField>
                         <TextField>
                            <HBox.margin>
@@ -115,11 +144,7 @@
                      </children>
                   </HBox>
                </children>
-            </AnchorPane>
-        </content>
-         <effect>
-            <Blend />
-         </effect>
-      </ScrollPane>
+            </VBox>
+         </content></ScrollPane>
    </children>
 </AnchorPane>

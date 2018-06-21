@@ -13,6 +13,10 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import Manager.Manager;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.fxml.FXMLLoader;
 
 public class Controller implements Initializable {
 
@@ -21,15 +25,37 @@ public class Controller implements Initializable {
     @FXML
     private Button addButton;
 
+    @FXML
+    private VBox pane;
 
     public void addKey()
     {
+        //HBox newKey = (HBox) pane.getChildren().get(0);
+        //pane.getChildren().add();
+
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("keyTemplate.fxml"));
+            HBox newKey = loader.load();
+        }
+        catch (Exception ex){
+            System.out.println("[System][Home] Failed to load Key Template!");
+            ex.printStackTrace();
+        }
+
+        try {
+
+        }
+        catch (Exception ex){
+            System.out.println("[System][Home] Failed to add key!");
+            ex.printStackTrace();
+        }
+
 
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resource) {
-        System.out.println("[System] Checking form...");
+        System.out.println("[System][Home] Checking form...");
         if(true)
         {
             System.out.println("[Load-> Home Controller] -> All elements are initialized!");
@@ -39,7 +65,7 @@ public class Controller implements Initializable {
             System.out.println("[Warning][Load-> Home Controller] -> Some elements are not initialized!");
         }
         System.out.println("[System] Loading data...");
-        chechInit();
+        checkInit();
     }
 
     public void test()
@@ -59,11 +85,16 @@ public class Controller implements Initializable {
         System.out.println("[System] Home Controller has initialized it's manager...");
     }
 
-    public void chechInit()
+    public void checkInit()
     {
         if(addButton == null)
         {
             System.out.println("[System][Home][Controller] Add Button is null");
+        }
+
+        if(pane == null)
+        {
+            System.out.println("[System][Home][Controller] Pane is null");
         }
     }
 }
