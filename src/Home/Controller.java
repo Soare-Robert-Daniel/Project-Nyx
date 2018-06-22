@@ -33,6 +33,7 @@ public class Controller implements Initializable {
         //HBox newKey = (HBox) pane.getChildren().get(0);
         //pane.getChildren().add();
 
+        /*
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("keyTemplate.fxml"));
             HBox newKey = loader.load();
@@ -49,8 +50,16 @@ public class Controller implements Initializable {
             System.out.println("[System][Home] Failed to add key!");
             ex.printStackTrace();
         }
-
-
+*/
+        try {
+            Key.KeyNode newKey = new Key.KeyNode();
+            newKey.setManager(this.manager);
+            this.pane.getChildren().add(newKey.getForm());
+        }
+        catch (Exception ex){
+            System.out.println("[System][Home] Failed to load Key Template!");
+            ex.printStackTrace();
+        }
     }
 
     @Override

@@ -40,7 +40,7 @@
                 <Insets top="12.5" />
             </HBox.margin>
         </CheckBox>
-      <CheckBox fx:id="edit" disable="true" layoutX="541.0" layoutY="23.0" mnemonicParsing="false" onAction="#editAction" text="Edit">
+      <CheckBox fx:id="edit" layoutX="541.0" layoutY="23.0" mnemonicParsing="false" onAction="#editAction" selected="true" text="Edit">
          <font>
             <Font size="16.0" />
          </font>

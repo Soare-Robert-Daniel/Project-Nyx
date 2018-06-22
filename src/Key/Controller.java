@@ -35,9 +35,44 @@ public class Controller implements Initializable {
     @FXML
     private CheckBox show;
 
+    @FXML
+    private CheckBox edit;
+
     @Override
     public void initialize(URL location, ResourceBundle resource) {
 
+    }
+
+    public void showAction()
+    {
+        if(this.show.isSelected())
+        {
+            this.node.sendDataToForm();
+            this.edit.setDisable(true);
+        }
+        else
+        {
+            this.username.setText("Hidden");
+            this.password.setText("Hidden");
+            this.edit.setDisable(false);
+        }
+    }
+
+    public void editAction()
+    {
+        if(this.edit.isSelected())
+        {
+            this.info.setEditable(true);
+            this.username.setEditable(true);
+            this.password.setEditable(true);
+        }
+        else
+        {
+            this.info.setEditable(false);
+            this.username.setEditable(false);
+            this.password.setEditable(false);
+            this.node.getDataFromForm();
+        }
     }
 
     public void setDataToKeyForm(String infoS, String usernameS, String passwordS)

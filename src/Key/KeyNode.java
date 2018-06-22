@@ -1,10 +1,14 @@
 package Key;
 
 
+import Manager.Manager;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.HBox;
 
 public class KeyNode {
+
+    private Manager manager;
+
     private String info;
     private String username;
     private String password;
@@ -43,6 +47,11 @@ public class KeyNode {
         return password;
     }
 
+    public void setManager(Manager manager)
+    {
+        this.manager = manager;
+    }
+
     public void setInfo(String info)
     {
         if(info != null)
@@ -61,6 +70,11 @@ public class KeyNode {
             this.password = password;
     }
 
+    public HBox getForm()
+    {
+        return this.form;
+    }
+
     public void sendDataToForm()
     {
         this.controller.setDataToKeyForm(this.info, this.username, this.password);
@@ -69,6 +83,8 @@ public class KeyNode {
     public void getDataFromForm()
     {
         this.controller.getDataFromForm();
+        System.out.println("[Data Flow][Key][Sent] -------- Begin Journey ---------");
+        this.manager.sendDataToDatabase(this);
     }
 
     private void buildKey()
@@ -89,5 +105,12 @@ public class KeyNode {
         }
         else
             System.out.println("[Warning][Key] Controller is null!");
+    }
+
+    public void testInput()
+    {
+        System.out.println("[System][Key] Info: " + this.info);
+        System.out.println("[System][Key] Username: " + this.username);
+        System.out.println("[System][Key] Password: " + this.password);
     }
 }
