@@ -6,9 +6,12 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox fx:id="frame" prefHeight="50.0" prefWidth="750.0" style="-fx-background-color: #89c4f4; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #34495E;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Key.Controller">
+<HBox fx:id="frame" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="750.0" style="-fx-background-color: #89c4f4; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #34495E;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Key.Controller">
+    <HBox.margin>
+        <Insets top="5.0" />
+    </HBox.margin>
     <children>
-        <TextField fx:id="info" accessibleRole="TEXT" editable="false" layoutX="10.0" layoutY="21.0" promptText="Source">
+        <TextField fx:id="info" accessibleRole="TEXT" layoutX="10.0" layoutY="21.0" promptText="Source">
             <font>
                 <Font size="13.0" />
             </font>
@@ -16,7 +19,7 @@
                 <Insets left="10.0" right="5.0" top="10.5" />
             </HBox.margin>
         </TextField>
-        <TextField fx:id="username" editable="false" promptText="Username">
+        <TextField fx:id="username" promptText="Username">
             <HBox.margin>
                 <Insets left="5.0" right="5.0" top="10.5" />
             </HBox.margin>
@@ -24,7 +27,7 @@
                 <Font size="13.0" />
             </font>
         </TextField>
-        <TextField fx:id="password" editable="false" promptText="Password">
+        <TextField fx:id="password" promptText="Password">
             <HBox.margin>
                 <Insets left="5.0" right="15.0" top="10.5" />
             </HBox.margin>
@@ -32,7 +35,7 @@
                 <Font size="13.0" />
             </font>
         </TextField>
-        <CheckBox fx:id="show" mnemonicParsing="false" onAction="#showAction" text="Show">
+        <CheckBox fx:id="show" mnemonicParsing="false" onAction="#showAction" selected="true" text="Show">
             <font>
                 <Font size="16.0" />
             </font>
@@ -40,7 +43,7 @@
                 <Insets top="12.5" />
             </HBox.margin>
         </CheckBox>
-      <CheckBox fx:id="edit" disable="true" layoutX="541.0" layoutY="23.0" mnemonicParsing="false" onAction="#editAction" opacity="0.0" text="Edit">
+      <CheckBox fx:id="edit" layoutX="541.0" layoutY="23.0" mnemonicParsing="false" onAction="#editAction" selected="true" text="Edit">
          <font>
             <Font size="16.0" />
          </font>

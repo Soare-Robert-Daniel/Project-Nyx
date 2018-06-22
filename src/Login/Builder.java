@@ -23,8 +23,8 @@ public class Builder {
     }
     public Builder() throws Exception
     {
-        height = 380;
-        width = 440;
+        height = 472;
+        width = 543;
         active = true;
         init();
     }
