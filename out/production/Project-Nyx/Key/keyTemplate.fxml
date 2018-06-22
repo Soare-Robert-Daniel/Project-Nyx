@@ -6,9 +6,9 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox prefHeight="50.0" prefWidth="670.0" style="-fx-background-color: #89c4f4; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #34495E;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Key.Controller">
+<HBox fx:id="frame" prefHeight="50.0" prefWidth="750.0" style="-fx-background-color: #89c4f4; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #34495E;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Key.Controller">
     <children>
-        <TextField fx:id="info" accessibleRole="TEXT" editable="false" layoutX="10.0" layoutY="21.0" text="Google">
+        <TextField fx:id="info" accessibleRole="TEXT" editable="false" layoutX="10.0" layoutY="21.0" promptText="Source">
             <font>
                 <Font size="13.0" />
             </font>
@@ -40,7 +40,15 @@
                 <Insets top="12.5" />
             </HBox.margin>
         </CheckBox>
-      <CheckBox fx:id="edit" layoutX="541.0" layoutY="23.0" mnemonicParsing="false" onAction="#editAction" selected="true" text="Edit">
+      <CheckBox fx:id="edit" disable="true" layoutX="541.0" layoutY="23.0" mnemonicParsing="false" onAction="#editAction" opacity="0.0" text="Edit">
+         <font>
+            <Font size="16.0" />
+         </font>
+         <HBox.margin>
+            <Insets left="5.0" top="12.5" />
+         </HBox.margin>
+      </CheckBox>
+      <CheckBox fx:id="delete" disable="true" layoutX="614.0" layoutY="23.0" mnemonicParsing="false" onAction="#deleteAction" opacity="0.0" text="Delete">
          <font>
             <Font size="16.0" />
          </font>

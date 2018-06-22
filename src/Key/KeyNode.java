@@ -12,15 +12,18 @@ public class KeyNode {
     private String info;
     private String username;
     private String password;
+    private boolean toDelete;
 
     private Key.Controller controller;
     private HBox form;
 
     public KeyNode()
     {
+        /*
         info = "Empty";
         username = "Empty";
         password = "Empty";
+        */
         buildKey();
     }
 
@@ -29,6 +32,15 @@ public class KeyNode {
         this.info = info;
         this.username = username;
         this.password = password;
+        buildKey();
+    }
+
+    public KeyNode(String info, String username, String password, boolean toDelete)
+    {
+        this.info = info;
+        this.username = username;
+        this.password = password;
+        this.toDelete = toDelete;
         buildKey();
     }
 
@@ -70,6 +82,16 @@ public class KeyNode {
             this.password = password;
     }
 
+    public void setToDelete(boolean toDelete)
+    {
+        this.toDelete = toDelete;
+    }
+
+    public boolean getToDelete()
+    {
+        return this.toDelete;
+    }
+
     public HBox getForm()
     {
         return this.form;
@@ -80,9 +102,21 @@ public class KeyNode {
         this.controller.setDataToKeyForm(this.info, this.username, this.password);
     }
 
+    public void sendDataToFormPrototype()
+    {
+        this.controller.setDataToKeyForm(this.info, this.username, this.password);
+    }
+
     public void getDataFromForm()
     {
         this.controller.getDataFromForm();
+        System.out.println("[Data Flow][Key][Sent] -------- Begin Journey ---------");
+        this.manager.sendDataToDatabase(this);
+    }
+
+    public void getDataFromFormPrototype()
+    {
+        this.controller.getDataFromFormPrototype();
         System.out.println("[Data Flow][Key][Sent] -------- Begin Journey ---------");
         this.manager.sendDataToDatabase(this);
     }

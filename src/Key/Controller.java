@@ -38,6 +38,12 @@ public class Controller implements Initializable {
     @FXML
     private CheckBox edit;
 
+    @FXML
+    private CheckBox delete;
+
+    @FXML
+    private HBox frame;
+
     @Override
     public void initialize(URL location, ResourceBundle resource) {
 
@@ -48,13 +54,24 @@ public class Controller implements Initializable {
         if(this.show.isSelected())
         {
             this.node.sendDataToForm();
-            this.edit.setDisable(true);
+
+            this.edit.setDisable(false);
+            this.edit.setOpacity(1);
+
         }
         else
         {
-            this.username.setText("Hidden");
-            this.password.setText("Hidden");
-            this.edit.setDisable(false);
+            if(this.node.getUsername() != null)
+                this.username.setText("Hidden");
+            if(this.node.getPassword() != null)
+                this.password.setText("Hidden");
+
+            this.edit.setDisable(true);
+            this.edit.setSelected(false);
+            this.edit.setOpacity(0);
+
+            this.delete.setDisable(true);
+            this.delete.setOpacity(0);
         }
     }
 
@@ -65,13 +82,35 @@ public class Controller implements Initializable {
             this.info.setEditable(true);
             this.username.setEditable(true);
             this.password.setEditable(true);
+
+            this.delete.setDisable(false);
+            this.delete.setOpacity(1);
         }
         else
         {
             this.info.setEditable(false);
             this.username.setEditable(false);
             this.password.setEditable(false);
+
+            // Send data to Database
             this.node.getDataFromForm();
+
+            this.delete.setDisable(true);
+            this.delete.setOpacity(0);
+        }
+    }
+
+    public void deleteAction()
+    {
+        if(this.delete.isSelected())
+        {
+            String color = "f03434";
+            this.frame.setStyle( String.format("-fx-background-color: #%s;", color));
+        }
+        else
+        {
+            String color = "89c4f4";
+            this.frame.setStyle( String.format("-fx-background-color: #%s;", color));
         }
     }
 
@@ -82,11 +121,28 @@ public class Controller implements Initializable {
         this.password.setText(passwordS);
     }
 
+    public void setDataToKeyFormPrototype(String infoS, String usernameS, String passwordS, boolean toDelete)
+    {
+        this.info.setText(infoS);
+        this.username.setText(usernameS);
+        this.password.setText(passwordS);
+        this.delete.setSelected(toDelete);
+        deleteAction();
+    }
+
     public void getDataFromForm()
     {
         this.node.setInfo(this.info.getText());
         this.node.setPassword(this.password.getText());
         this.node.setUsername(this.username.getText());
+    }
+
+    public void getDataFromFormPrototype()
+    {
+        this.node.setInfo(this.info.getText());
+        this.node.setPassword(this.password.getText());
+        this.node.setUsername(this.username.getText());
+        this.node.setToDelete(this.delete.isSelected());
     }
 
     public void setNode(KeyNode node)
