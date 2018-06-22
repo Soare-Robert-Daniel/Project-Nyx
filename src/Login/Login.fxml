@@ -22,9 +22,9 @@
       <RowConstraints />
    </rowConstraints>
    <children>
-      <AnchorPane prefHeight="380.0" prefWidth="440.0" style="-fx-background-color: #294F6d;">
+      <AnchorPane style="-fx-background-color: #294F6d;">
          <children>
-            <VBox fillWidth="false" layoutX="146.0" layoutY="134.0" prefHeight="338.0" prefWidth="397.0">
+            <VBox alignment="TOP_CENTER" fillWidth="false" layoutX="13.0" layoutY="91.0" prefHeight="381.0" prefWidth="530.0">
                <children>
                   <Label alignment="TOP_CENTER" contentDisplay="CENTER" text="Project Nyx" textAlignment="CENTER" textFill="WHITE">
                      <font>
@@ -93,8 +93,19 @@
                         <Blend />
                      </effect>
                      <VBox.margin>
-                        <Insets left="60.0" top="10.0" />
+                        <Insets top="10.0" />
                      </VBox.margin></Button>
+                  <Button fx:id="register" alignment="TOP_CENTER" contentDisplay="CENTER" layoutX="205.0" layoutY="213.0" mnemonicParsing="false" onMouseClicked="#loginUser" prefHeight="60.0" prefWidth="140.0" style="-fx-background-color: 6c7f8e; -fx-background-radius: 100;" text="Register" textAlignment="CENTER" textFill="#042d4c" textOverrun="CLIP">
+                     <font>
+                        <Font size="28.0" />
+                     </font>
+                     <effect>
+                        <Blend />
+                     </effect>
+                     <VBox.margin>
+                        <Insets top="6.0" />
+                     </VBox.margin>
+                  </Button>
                </children>
             </VBox>
          </children>

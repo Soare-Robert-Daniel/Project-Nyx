@@ -20,7 +20,7 @@ public class Builder {
     public Builder() throws Exception
     {
         height = 450;
-        width = 870;
+        width = 880;
         active = true;
         init();
     }

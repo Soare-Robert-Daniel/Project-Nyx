@@ -4,7 +4,7 @@
 
 ### UI
 - implement a Login/Sing Up interface [50/100]
-- implement the Home interface [90/100]
+- implement the Home interface [92/100]
   - need some tweaks
 - implement Settings interface [0/100]
 
