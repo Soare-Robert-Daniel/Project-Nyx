@@ -120,4 +120,11 @@ public class Manager {
             System.out.println("[Warning][Manager][Init] Home Controller is null!");
         }
     }
+
+    public void sendDataToDatabase(Key.KeyNode node)
+    {
+        System.out.println("[Data Flow][Manager][Sent] Key data received!");
+        node.testInput();
+        System.out.println("[Data Flow][Manager][Sent] -------- End Journey ---------");
+    }
 }
