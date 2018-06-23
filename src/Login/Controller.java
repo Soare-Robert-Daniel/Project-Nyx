@@ -7,9 +7,12 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.MouseEvent;
 
 import java.net.URL;
+import java.lang.Character;
 import java.util.ResourceBundle;
 
 import Manager.Manager;
@@ -27,6 +30,9 @@ public class Controller implements Initializable {
     @FXML
     private Button loginButton;
 
+    @FXML
+    private Button registerButton;
+
 
     private boolean checkInit()
     {
@@ -43,10 +49,60 @@ public class Controller implements Initializable {
             System.out.println(passwordField.getText());
     }
 
-    public void loginUser(MouseEvent event){
+    public void loginUser(){
         System.out.println("Go to Home!");
         ShowFields();
         this.manager.changeScene("home");
+    }
+
+    public void registerUser()
+    {
+        if(checkForWrongInput())
+        {
+            Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setTitle("Register");
+            alert.setHeaderText("Registration failed!");
+            alert.setContentText("Invalid input! \n - all fields must be completed \n - only letters and digits");
+            alert.showAndWait();
+            return;
+        }
+        System.out.println("Register!");
+        ShowFields();
+        Alert alert = new Alert(AlertType.INFORMATION);
+        alert.setTitle("Register");
+        alert.setHeaderText("Thank you for your registration!");
+        alert.setContentText(String.format("User %s had been registered!", this.usernameField.getText()));
+        alert.showAndWait();
+        /*
+        alert.showAndWait().ifPresent(rs -> {
+            if (rs == ButtonType.OK) {
+                System.out.println("Pressed OK.");
+            }
+        });
+        */
+    }
+
+    private boolean checkForWrongInput()
+    {
+        // Check if the fields are empty
+        if(this.usernameField.getText().isEmpty() || this.passwordField.getText().isEmpty())
+        {
+            return true;
+        }
+
+        // Check for invalid characters
+        for(char c : this.usernameField.getText().toCharArray())
+        {
+            if(!Character.isLetterOrDigit(c))
+                return true;
+        }
+
+        for(char c : this.passwordField.getText().toCharArray())
+        {
+            if(!Character.isLetterOrDigit(c))
+                return true;
+        }
+        return false;
     }
 
     @Override

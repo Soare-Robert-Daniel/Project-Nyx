@@ -10,6 +10,8 @@ import java.util.concurrent.ExecutionException;
 
 public class Manager {
 
+
+
     private int testManager;
     private Stage stage;
 
