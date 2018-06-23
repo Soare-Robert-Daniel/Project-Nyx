@@ -85,7 +85,7 @@
                         <Insets bottom="5.0" top="5.0" />
                      </VBox.margin>
                   </Label>
-                  <Button fx:id="loginButton" alignment="TOP_CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#loginUser" prefHeight="60.0" prefWidth="140.0" style="-fx-background-color: 6c7f8e; -fx-background-radius: 100;" text="Login" textAlignment="CENTER" textFill="#042d4c" textOverrun="CLIP">
+                  <Button fx:id="loginButton" alignment="TOP_CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#loginUser" prefHeight="60.0" prefWidth="140.0" style="-fx-background-color: 6c7f8e; -fx-background-radius: 100;" text="Login" textAlignment="CENTER" textFill="#042d4c" textOverrun="CLIP">
                      <font>
                         <Font size="28.0" />
                      </font>
@@ -95,7 +95,7 @@
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin></Button>
-                  <Button fx:id="register" alignment="TOP_CENTER" contentDisplay="CENTER" layoutX="205.0" layoutY="213.0" mnemonicParsing="false" onMouseClicked="#loginUser" prefHeight="60.0" prefWidth="140.0" style="-fx-background-color: 6c7f8e; -fx-background-radius: 100;" text="Register" textAlignment="CENTER" textFill="#042d4c" textOverrun="CLIP">
+                  <Button fx:id="registerButton" alignment="TOP_CENTER" contentDisplay="CENTER" layoutX="205.0" layoutY="213.0" mnemonicParsing="false" onAction="#registerUser" prefHeight="60.0" prefWidth="140.0" style="-fx-background-color: 6c7f8e; -fx-background-radius: 100;" text="Register" textAlignment="CENTER" textFill="#042d4c" textOverrun="CLIP">
                      <font>
                         <Font size="28.0" />
                      </font>
