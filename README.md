@@ -15,4 +15,4 @@
 
 ### API
 - implement Database and functions to access it [0/100]
-- implement the cryptographic algorithm [0/100]
+- implement the cryptographic algorithm [85/100]
