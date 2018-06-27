@@ -55,7 +55,7 @@ public class Controller implements Initializable {
         this.manager.changeScene("home");
     }
 
-    public void registerUser()
+    public void registerUser() throws Exception
     {
         if(checkForWrongInput())
         {
@@ -66,6 +66,7 @@ public class Controller implements Initializable {
             alert.showAndWait();
             return;
         }
+        manager.login(this.usernameField.getText(), this.passwordField.getText());
         System.out.println("Register!");
         ShowFields();
         Alert alert = new Alert(AlertType.INFORMATION);
@@ -73,6 +74,7 @@ public class Controller implements Initializable {
         alert.setHeaderText("Thank you for your registration!");
         alert.setContentText(String.format("User %s had been registered!", this.usernameField.getText()));
         alert.showAndWait();
+
         /*
         alert.showAndWait().ifPresent(rs -> {
             if (rs == ButtonType.OK) {

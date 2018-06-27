@@ -47,7 +47,7 @@ public class Main extends Application {
 
     void Login() throws Exception
     {
-        if(manager.login())
+        if(true)
         {
             //stage.setScene(scene);
         }

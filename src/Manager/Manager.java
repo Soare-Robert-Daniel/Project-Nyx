@@ -14,6 +14,7 @@ public class Manager {
 
     private int testManager;
     private Stage stage;
+    private User.UserNode user;
 
     private Login.Builder loginBuilder;
     private Login.Controller loginControl;
@@ -42,9 +43,9 @@ public class Manager {
         initializeControllers();
     }
 
-    public boolean login() throws Exception
+    public void login(String username, String password) throws Exception
     {
-        return true;
+        user.registerUser(username, password);
     }
 
     public boolean settings() throws Exception
