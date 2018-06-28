@@ -51,7 +51,7 @@
             <Insets left="5.0" top="12.5" />
          </HBox.margin>
       </CheckBox>
-      <CheckBox fx:id="delete" disable="true" layoutX="614.0" layoutY="23.0" mnemonicParsing="false" onAction="#deleteAction" opacity="0.0" text="Delete">
+      <CheckBox fx:id="delete" layoutX="614.0" layoutY="23.0" mnemonicParsing="false" onAction="#deleteAction" text="Delete">
          <font>
             <Font size="16.0" />
          </font>

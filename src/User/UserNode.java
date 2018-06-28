@@ -1,6 +1,8 @@
 package User;
 
 
+import java.util.List;
+
 public class UserNode {
 
     private String username;
@@ -9,13 +11,13 @@ public class UserNode {
 
 
 
-    public void registerUser(String username, String password)
+    public void registerUser(String user, String password)
     {
-        username = Api.Crypto.on(username);
+        user = Api.Crypto.on(user);
         password = Api.Crypto.on(password);
 
         System.out.println("[User] -> Send data to datebase!");
-        System.out.println("[User][Data] Username:" +  username);
+        System.out.println("[User][Data] Username:" +  user);
         System.out.println("[User][Data] Username:" +  password);
     }
 
@@ -64,4 +66,13 @@ public class UserNode {
 
     }
 
+    public void deleteKeysFromDatabase(List keysToDelete)
+    {
+        System.out.println(String.format("[User][Database] Delete keys | Total keys: %d",keysToDelete.size()));
+    }
+
+    public void setKeyToDelete()
+    {
+
+    }
 }

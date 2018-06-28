@@ -106,6 +106,7 @@ public class Controller implements Initializable {
         {
             String color = "f03434";
             this.frame.setStyle( String.format("-fx-background-color: #%s;", color));
+            this.node.sendToDelete();
         }
         else
         {

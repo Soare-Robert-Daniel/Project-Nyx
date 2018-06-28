@@ -1,5 +1,6 @@
 package Home;
 
+import Key.KeyNode;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
@@ -10,7 +11,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.List;
 
 import Manager.Manager;
 import javafx.scene.layout.AnchorPane;
@@ -27,6 +30,26 @@ public class Controller implements Initializable {
 
     @FXML
     private VBox pane;
+
+    public void deleteKeys(List keysToDelete)
+    {
+        for (Object key: keysToDelete) {
+            try {
+                if (key instanceof Key.KeyNode && key != null) {
+                    this.pane.getChildren().remove(((KeyNode) key).getForm());
+                }
+            }
+            catch (Exception ex)
+            {
+                System.out.println(String.format("[Error][Home][Delete Key]: %s", ex.getMessage()));
+            }
+        }
+    }
+
+    public void deleteAction()
+    {
+        this.manager.deleteKeys();
+    }
 
     public void addKey()
     {

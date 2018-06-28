@@ -1,16 +1,17 @@
 package Manager;
 
+import Key.KeyNode;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 
 public class Manager {
-
-
 
     private int testManager;
     private Stage stage;
@@ -22,9 +23,11 @@ public class Manager {
     private Home.Builder homeBuilder;
     private Home.Controller homeControl;
 
+    private List keysToDelete;
+
     public Manager()
     {
-        loginControl = null;
+        this.keysToDelete = new ArrayList();
     }
 
     public Manager(int x) throws Exception
@@ -41,11 +44,23 @@ public class Manager {
 
         // Init Controllers's settings
         initializeControllers();
+
+        // User
+        this.user = new User.UserNode();
+
+        this.keysToDelete = new ArrayList();
     }
 
     public void login(String username, String password) throws Exception
     {
-        user.registerUser(username, password);
+        try {
+            user.registerUser(username, password);
+        }
+        catch (Exception ex)
+        {
+            System.out.println("[Error][Manager][Login]: ");
+            System.out.println(ex.getMessage());
+        }
     }
 
     public boolean settings() throws Exception
@@ -129,5 +144,35 @@ public class Manager {
         System.out.println("[Data Flow][Manager][Sent] Key data received!");
         node.testInput();
         System.out.println("[Data Flow][Manager][Sent] -------- End Journey ---------");
+    }
+
+    public void addKeyToDelete(Key.KeyNode key)
+    {
+        try {
+            this.keysToDelete.add(key);
+        }
+        catch (Exception ex)
+        {
+           System.out.println(String.format("[Error][Manager][Add Key To Delete]: %s", ex.getMessage()));
+           if(key == null)
+                {
+                    System.out.println("[Error][Manager][Add Key To Delete][NUll] Key is null");
+                }
+           if(this.keysToDelete == null)
+                {
+                    System.out.println("[Error][Manager][Add Key To Delete][NUll] KeysToDelete is null");
+                }
+
+        }
+
+    }
+
+    public void deleteKeys()
+    {
+        if(this.keysToDelete.isEmpty())
+            return;
+        this.homeControl.deleteKeys(this.keysToDelete);
+        this.user.deleteKeysFromDatabase(this.keysToDelete);
+        this.keysToDelete.clear();
     }
 }
