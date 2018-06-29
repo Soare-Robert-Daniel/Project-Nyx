@@ -39,6 +39,7 @@ public class Main extends Application {
         //primaryStage.show();
 
         stage.setTitle("Project Nyx");
+        stage.setResizable(false);
         manager.changeScene("login");
         scene = stage.getScene();
 
@@ -47,7 +48,7 @@ public class Main extends Application {
 
     void Login() throws Exception
     {
-        if(manager.login())
+        if(true)
         {
             //stage.setScene(scene);
         }

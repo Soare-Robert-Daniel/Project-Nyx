@@ -44,6 +44,17 @@ public class KeyNode {
         buildKey();
     }
 
+    public void sendToDelete()
+    {
+        this.toDelete = true;
+        this.manager.addKeyToDelete(this);
+    }
+
+    public void delete()
+    {
+        //this.form.getParent().getchi
+    }
+
     public String getInfo()
     {
         return info;
