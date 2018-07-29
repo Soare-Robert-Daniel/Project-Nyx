@@ -11,6 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
 import java.net.URL;
+import java.security.Key;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.List;
@@ -31,17 +32,34 @@ public class Controller implements Initializable {
     @FXML
     private VBox pane;
 
+    public List<KeyNode> keys;
+
     public void deleteKeys(List keysToDelete)
     {
         for (Object key: keysToDelete) {
             try {
-                if (key instanceof Key.KeyNode && key != null) {
+                if (key instanceof KeyNode && key != null)
+                {
                     this.pane.getChildren().remove(((KeyNode) key).getForm());
+                    this.keys.remove(((KeyNode) key));
                 }
             }
             catch (Exception ex)
             {
                 System.out.println(String.format("[Error][Home][Delete Key]: %s", ex.getMessage()));
+            }
+        }
+    }
+
+    public void saveAction()
+    {
+        this.manager.save();
+        for(KeyNode key : keys)
+        {
+            if(key.isUnsaved())
+            {
+                String color = "89c4f4";
+                key.setStateForm("normal");
             }
         }
     }
@@ -53,31 +71,12 @@ public class Controller implements Initializable {
 
     public void addKey()
     {
-        //HBox newKey = (HBox) pane.getChildren().get(0);
-        //pane.getChildren().add();
-
-        /*
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("keyTemplate.fxml"));
-            HBox newKey = loader.load();
-        }
-        catch (Exception ex){
-            System.out.println("[System][Home] Failed to load Key Template!");
-            ex.printStackTrace();
-        }
-
-        try {
-
-        }
-        catch (Exception ex){
-            System.out.println("[System][Home] Failed to add key!");
-            ex.printStackTrace();
-        }
-*/
-        try {
-            Key.KeyNode newKey = new Key.KeyNode();
+            KeyNode newKey = new KeyNode();
             newKey.setManager(this.manager);
+
             this.pane.getChildren().add(newKey.getForm());
+            this.keys.add(newKey);
         }
         catch (Exception ex){
             System.out.println("[System][Home] Failed to load Key Template!");
@@ -87,8 +86,11 @@ public class Controller implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resource) {
+        this.keys = new ArrayList<KeyNode>();
+
         System.out.println("[System][Home] Checking form...");
-        if(true)
+
+        if(checkInit())
         {
             System.out.println("[Load-> Home Controller] -> All elements are initialized!");
         }
@@ -96,8 +98,6 @@ public class Controller implements Initializable {
         {
             System.out.println("[Warning][Load-> Home Controller] -> Some elements are not initialized!");
         }
-        System.out.println("[System] Loading data...");
-        checkInit();
     }
 
     public void test()
@@ -117,16 +117,42 @@ public class Controller implements Initializable {
         System.out.println("[System] Home Controller has initialized it's manager...");
     }
 
-    public void checkInit()
+    public boolean checkInit()
     {
         if(addButton == null)
         {
             System.out.println("[System][Home][Controller] Add Button is null");
+            return false;
         }
 
         if(pane == null)
         {
             System.out.println("[System][Home][Controller] Pane is null");
+            return false;
+        }
+
+        return true;
+    }
+
+    public void fetchDataFromDatabase()
+    {
+        System.out.println("[System][Home][Controller] Loading data from database!");
+
+        if(this.manager == null)
+        {
+            System.out.println("[Warning][Home] Manager is null");
+            return;
+        }
+
+        for(KeyNode obj : this.manager.getKeys())
+        {
+            if (obj != null)
+            {
+                obj.setManager(this.manager);
+               
+                this.pane.getChildren().add(obj.getForm());
+                this.keys.add(obj);
+            }
         }
     }
 }

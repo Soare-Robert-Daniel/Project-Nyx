@@ -3,21 +3,13 @@ package Key;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
-import javafx.event.ActionEvent;
-import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
-import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import Manager.Manager;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
-import javafx.fxml.FXMLLoader;
 
 public class Controller implements Initializable {
 
@@ -92,8 +84,12 @@ public class Controller implements Initializable {
             this.username.setEditable(false);
             this.password.setEditable(false);
 
-            // Send data to Database
-            this.node.getDataFromForm();
+            this.getDataFromForm();
+
+            if(this.node.isUnsaved())
+            {
+                this.state("unsaved");
+            }
 
             this.delete.setDisable(true);
             this.delete.setOpacity(0);
@@ -104,18 +100,16 @@ public class Controller implements Initializable {
     {
         if(this.delete.isSelected())
         {
-            String color = "f03434";
-            this.frame.setStyle( String.format("-fx-background-color: #%s;", color));
+            this.state("delete");
             this.node.sendToDelete();
         }
         else
         {
-            String color = "89c4f4";
-            this.frame.setStyle( String.format("-fx-background-color: #%s;", color));
+            state("");
         }
     }
 
-    public void setDataToKeyForm(String infoS, String usernameS, String passwordS)
+    public void setDataToForm(String infoS, String usernameS, String passwordS)
     {
         this.info.setText(infoS);
         this.username.setText(usernameS);
@@ -149,6 +143,35 @@ public class Controller implements Initializable {
     public void setNode(KeyNode node)
     {
         this.node = node;
+    }
+
+    public void state(String value)
+    {
+        switch (value)
+        {
+            case "unsaved":
+                String color1 = "ffae42";
+                this.frame.setStyle( String.format("-fx-background-color: #%s;", color1));
+                break;
+            case "delete":
+                String color2 = "f03434";
+                this.frame.setStyle( String.format("-fx-background-color: #%s;", color2));
+                break;
+            case "normal":
+                String color3 = "89c4f4";
+                this.frame.setStyle( String.format("-fx-background-color: #%s;", color3));
+                break;
+            default:
+                if(this.node.isUnsaved())
+                {
+                    state("unsaved");
+                }
+                else
+                {
+                    state("normal");
+                }
+                break;
+        }
     }
 }
 

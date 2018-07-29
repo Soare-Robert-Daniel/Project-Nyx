@@ -13,6 +13,7 @@ public class KeyNode {
     private String username;
     private String password;
     private boolean toDelete;
+    private boolean unsaved;
 
     private Key.Controller controller;
     private HBox form;
@@ -25,6 +26,7 @@ public class KeyNode {
         password = "Empty";
         */
         buildKey();
+
     }
 
     public KeyNode(String info, String username, String password)
@@ -33,6 +35,7 @@ public class KeyNode {
         this.username = username;
         this.password = password;
         buildKey();
+
     }
 
     public KeyNode(String info, String username, String password, boolean toDelete)
@@ -42,17 +45,13 @@ public class KeyNode {
         this.password = password;
         this.toDelete = toDelete;
         buildKey();
+
     }
 
     public void sendToDelete()
     {
         this.toDelete = true;
         this.manager.addKeyToDelete(this);
-    }
-
-    public void delete()
-    {
-        //this.form.getParent().getchi
     }
 
     public String getInfo()
@@ -78,19 +77,37 @@ public class KeyNode {
     public void setInfo(String info)
     {
         if(info != null)
-            this.info = info;
+        {
+            if(this.info != info)
+            {
+                this.info = info;
+                this.unsaved = true;
+            }
+        }
     }
 
     public void setUsername(String username)
     {
         if(username != null)
-            this.username = username;
+        {
+            if(this.username != username)
+            {
+                this.username = username;
+                this.unsaved = true;
+            }
+        }
     }
 
     public void setPassword(String password)
     {
         if(password != null)
-            this.password = password;
+        {
+            if(this.password != password)
+            {
+                this.password = password;
+                this.unsaved = true;
+            }
+        }
     }
 
     public void setToDelete(boolean toDelete)
@@ -110,26 +127,7 @@ public class KeyNode {
 
     public void sendDataToForm()
     {
-        this.controller.setDataToKeyForm(this.info, this.username, this.password);
-    }
-
-    public void sendDataToFormPrototype()
-    {
-        this.controller.setDataToKeyForm(this.info, this.username, this.password);
-    }
-
-    public void getDataFromForm()
-    {
-        this.controller.getDataFromForm();
-        System.out.println("[Data Flow][Key][Sent] -------- Begin Journey ---------");
-        this.manager.sendDataToDatabase(this);
-    }
-
-    public void getDataFromFormPrototype()
-    {
-        this.controller.getDataFromFormPrototype();
-        System.out.println("[Data Flow][Key][Sent] -------- Begin Journey ---------");
-        this.manager.sendDataToDatabase(this);
+        this.controller.setDataToForm(this.info, this.username, this.password);
     }
 
     private void buildKey()
@@ -138,6 +136,7 @@ public class KeyNode {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("keyTemplate.fxml"));
             this.form = loader.load();
             this.controller = loader.getController();
+            this.sendDataToForm();
         }
         catch (Exception ex){
             System.out.println("[System][Key] Failed to load Key Template!");
@@ -147,9 +146,23 @@ public class KeyNode {
         if(this.controller != null)
         {
             this.controller.setNode(this);
+
         }
         else
             System.out.println("[Warning][Key] Controller is null!");
+
+        this.controller.showAction();
+    }
+
+    public boolean isUnsaved()
+    {
+        return this.unsaved;
+    }
+
+
+    public void setStateForm(String value)
+    {
+        this.controller.state(value);
     }
 
     public void testInput()

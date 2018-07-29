@@ -2,77 +2,65 @@ package User;
 
 
 import java.util.List;
+import Api.Crypt;
 
 public class UserNode {
 
     private String username;
+    private String password;
 
-
-
-
+    public UserNode()
+    {
+        this.username = new String("Default");
+        this.password = new String("Default");
+    }
 
     public void registerUser(String user, String password)
     {
-        user = Api.Crypto.on(user);
-        password = Api.Crypto.on(password);
-
-        System.out.println("[User] -> Send data to datebase!");
-        System.out.println("[User][Data] Username:" +  user);
-        System.out.println("[User][Data] Username:" +  password);
+        this.setUsername(user);
+        this.setPassword(password);
     }
 
-
-
-    public void getUserFromDatabase()
+    public boolean auth(String user, String password, String userDatabase, String passwordDatabase)
     {
 
+       System.out.println(String.format( "[User][Data][Auth] Data: %s - %s : %s - %s" , user, password, userDatabase, passwordDatabase));
 
 
+       if(
+               (user.equals(userDatabase)) &&
+                       (password.equals(passwordDatabase))
+               ) {
+
+           this.setUsername(user);
+           this.setPassword(password);
+           return true;
+       }
+       else
+            return false;
     }
-
-
-
-    public void setUserSetting(String setting, boolean value)
-    {
-
-
-
-    }
-
-    public void deleteUser()
-    {
-
-
-
-    }
-
 
     public String getUsername()
-
     {
-
         return username;
-
     }
 
 
     public void setUsername(String username)
-
     {
-
         if(username != null)
-
             this.username = username;
-
     }
 
-    public void deleteKeysFromDatabase(List keysToDelete)
+    public String getPassword()
     {
-        System.out.println(String.format("[User][Database] Delete keys | Total keys: %d",keysToDelete.size()));
+        return this.password;
     }
 
-    public void setKeyToDelete()
+    public void setPassword(String password)
     {
-
+        if(password != null)
+            this.password = password;
     }
+
 }
