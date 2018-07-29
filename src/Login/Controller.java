@@ -53,7 +53,16 @@ public class Controller implements Initializable {
     public void loginUser(){
         System.out.println("Go to Home!");
         ShowFields();
-        this.manager.changeScene("home");
+        if(this.manager.login(usernameField.getText(), passwordField.getText()))
+            this.manager.changeScene("home");
+        else
+        {
+            Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setTitle("Login");
+            alert.setHeaderText("Login failed!");
+            alert.setContentText("Invalid name or password");
+            alert.showAndWait();
+        }
     }
 
     public void registerUser() throws Exception
@@ -67,20 +76,29 @@ public class Controller implements Initializable {
             alert.showAndWait();
             return;
         }
-        manager.login(this.usernameField.getText(), this.passwordField.getText());
-        System.out.println("Register!");
-        ShowFields();
-        Alert alert = new Alert(AlertType.INFORMATION);
-        alert.setTitle("Register");
-        alert.setHeaderText("Thank you for your registration!");
-        alert.setContentText(String.format("User %s has been registered!", this.usernameField.getText()));
-        //alert.showAndWait();
 
-        alert.showAndWait().ifPresent(rs -> {
-            if (rs == ButtonType.OK) {
-                System.out.println("Pressed OK.");
-            }
-        });
+        if(this.manager.register(usernameField.getText(), passwordField.getText()))
+        {
+            System.out.println("Register!");
+            ShowFields();
+            Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setTitle("Register");
+            alert.setHeaderText("Thank you for your registration!");
+            alert.setContentText(String.format("User %s has been registered!", this.usernameField.getText()));
+            alert.showAndWait();
+
+            this.manager.changeScene("home_New_User");
+        }
+        else
+        {
+            System.out.println("Register failed!");
+            ShowFields();
+            Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setTitle("Register failed");
+            alert.setHeaderText("User already exists!");
+            alert.setContentText("Choose another user name");
+            alert.showAndWait();
+        }
 
     }
 
@@ -93,7 +111,7 @@ public class Controller implements Initializable {
         }
 
         // Check for length
-        if(this.usernameField.getText().length() < 8 || this.passwordField.getText().length() < 8 ||
+        if( //this.usernameField.getText().length() < 8 || this.passwordField.getText().length() < 8 ||
                 this.usernameField.getText().length() > 16 || this.passwordField.getText().length() > 16)
         {
             return true;
@@ -126,11 +144,6 @@ public class Controller implements Initializable {
             System.out.println("[Warning][Load-> Login Controller] -> Some elements are not initialized!");
         }
         System.out.println("[System] Loading data...");
-    }
-
-    public void test()
-    {
-        System.out.println("Test passed...");
     }
 
     public void setManager(Manager manager)

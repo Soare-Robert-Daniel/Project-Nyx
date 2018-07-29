@@ -18,12 +18,12 @@
                <VBox.margin>
                   <Insets left="18.0" top="70.0" />
                </VBox.margin></Button>
-            <Button layoutX="30.0" layoutY="40.0" mnemonicParsing="false" style="-fx-background-color: transparancy; -fx-text-fill: #fabe58; -fx-border-width: 2px 2px 2px 2px; -fx-border-color: white;" text="Settings">
+            <Button layoutX="30.0" layoutY="40.0" mnemonicParsing="false" onAction="#saveAction" style="-fx-background-color: transparancy; -fx-text-fill: #fabe58; -fx-border-width: 2px 2px 2px 2px; -fx-border-color: white;" text="Save" textOverrun="CLIP">
                <font>
-                  <Font size="15.0" />
+                  <Font size="19.0" />
                </font>
                <VBox.margin>
-                  <Insets left="21.0" top="10.0" />
+                  <Insets left="25.5" top="10.0" />
                </VBox.margin>
             </Button>
             <Button layoutX="29.0" layoutY="148.0" mnemonicParsing="false" onAction="#deleteAction" style="-fx-background-color: transparancy; -fx-text-fill: #4ECDC4; -fx-border-width: 2px 2px 2px 2px; -fx-border-color: white;" text="Delete">

@@ -19,7 +19,7 @@
                 <Insets left="10.0" right="5.0" top="10.5" />
             </HBox.margin>
         </TextField>
-        <TextField fx:id="username" promptText="Username">
+        <TextField fx:id="username" editable="false" promptText="Username">
             <HBox.margin>
                 <Insets left="5.0" right="5.0" top="10.5" />
             </HBox.margin>
@@ -27,7 +27,7 @@
                 <Font size="13.0" />
             </font>
         </TextField>
-        <TextField fx:id="password" promptText="Password">
+        <TextField fx:id="password" editable="false" promptText="Password">
             <HBox.margin>
                 <Insets left="5.0" right="15.0" top="10.5" />
             </HBox.margin>
@@ -35,7 +35,7 @@
                 <Font size="13.0" />
             </font>
         </TextField>
-        <CheckBox fx:id="show" mnemonicParsing="false" onAction="#showAction" selected="true" text="Show">
+        <CheckBox fx:id="show" mnemonicParsing="false" onAction="#showAction" text="Show">
             <font>
                 <Font size="16.0" />
             </font>
@@ -43,7 +43,7 @@
                 <Insets top="12.5" />
             </HBox.margin>
         </CheckBox>
-      <CheckBox fx:id="edit" layoutX="541.0" layoutY="23.0" mnemonicParsing="false" onAction="#editAction" selected="true" text="Edit">
+      <CheckBox fx:id="edit" layoutX="541.0" layoutY="23.0" mnemonicParsing="false" onAction="#editAction" opacity="0.0" text="Edit">
          <font>
             <Font size="16.0" />
          </font>
@@ -51,7 +51,7 @@
             <Insets left="5.0" top="12.5" />
          </HBox.margin>
       </CheckBox>
-      <CheckBox fx:id="delete" layoutX="614.0" layoutY="23.0" mnemonicParsing="false" onAction="#deleteAction" text="Delete">
+      <CheckBox fx:id="delete" layoutX="614.0" layoutY="23.0" mnemonicParsing="false" onAction="#deleteAction" opacity="0.0" text="Delete">
          <font>
             <Font size="16.0" />
          </font>
